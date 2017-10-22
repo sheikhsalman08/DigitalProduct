@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+       <section id="side-menu">
+         <ul>
+           <li id="sub-menu-box">
+               <a id="car-name1" href="index.html">All</a>
+           </li>
+           <li id="sub-menu-box">
+               <a id="car-name1" href="picture.html">Pictures</a>
+           </li>
+           <li id="sub-menu-box">
+               <a id="car-name1" href="logo.html">Logo</a>
+           </li>
+           <li id="sub-menu-box">
+               <a id="car-name1" href="poster.html">Poster</a>
+           </li>
+           <li id="sub-menu-box">
+               <a id="car-name1" href="video.html">Videos</a>
+           </li>
+
+         </ul>
+       </section>
+       <section id="img-box">
+         <div class="container-fluid">
+           <div class="row">
+             <div class="col-sm-12" id="img-row">   <!-- begin picture -->
+             {% for i in pictures %}
+               <div class="col-sm-3" id="box-row">
+                 <div class="middle">
+                    <i class="fa fa-cloud-download fa-5x" aria-hidden="true"></i>
+                  </div>
+                  <a href="product.html">
+                  {% if i.image %}
+                     <img src="{{ i.image.url }}" id="img-box-part" class="wow fadeInUp "/>
+                  {% else %}
+                    <img src="" id="img-box-part" class="wow fadeInUp " alt="Blank"/>
+                  {% endif %}
+                  </a>
+               </div>
+             {% endfor %}
+             </div>         <!-- End picture -->
+
+             <div class="col-sm-12" id="img-row"> <!-- Begin Logo -->
+              {% for i in logo %}
+               <div class="col-sm-3" id="box-row">
+                 <div class="middle">
+                    <i class="fa fa-cloud-download fa-5x" aria-hidden="true"></i>
+                  </div>
+                  <a href="product.html">
+                  {% if i.image %}
+                     <img src="{{ i.image.url }}" id="img-box-part" class="wow fadeInUp "/>
+                  {% else %}
+                    <img src="" id="img-box-part" class="wow fadeInUp " alt="Blank"/>
+                  {% endif %}
+                  </a>
+                 {% endfor %}
+               </div>   <!-- End Logo -->
+
+             <div class="col-sm-12" id="img-row"> <!-- Begin Poster -->
+              {% for i in poster %}
+               <div class="col-sm-3" id="box-row">
+                 <div class="middle">
+                    <i class="fa fa-cloud-download fa-5x" aria-hidden="true"></i>
+                  </div>
+                  <a href="product.html">
+                  {% if i.image %}
+                     <img src="{{ i.image.url }}" id="img-box-part" class="wow fadeInUp "/>
+                  {% else %}
+                    <img src="" id="img-box-part" class="wow fadeInUp " alt="Blank"/>
+                  {% endif %}
+                  </a>
+                 {% endfor %}
+               </div>   <!-- End Poster -->
+
+             <div class="col-sm-12" id="img-row"> <!-- Begin videos -->
+              {% for i in videos %}
+               <div class="col-sm-3" id="box-row">
+                 <div class="middle">
+                    <i class="fa fa-cloud-download fa-5x" aria-hidden="true"></i>
+                  </div>
+                  <a href="product.html">
+                  {% if i.image %}
+                     <img src="{{ i.image.url }}" id="img-box-part" class="wow fadeInUp "/>
+                  {% else %}
+                    <img src="" id="img-box-part" class="wow fadeInUp " alt="Blank"/>
+                  {% endif %}
+                  </a>
+                 {% endfor %}
+               </div>   <!-- End Videos -->
+
+           </div>
+         </div>
+       </section>
+{% endblock %}
