@@ -1,10 +1,11 @@
+{% load static %}
 <html>
    <head>
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <title>Product</title>
-     <link rel="icon" href="images/logo-enterprise.png" />
-     <link href="style/style.css" rel="stylesheet" >
-     <link href="style/animate.css" rel="stylesheet" >
+     <link rel="icon" href="{% static 'images/logo-enterprise.png' %}" />
+     <link href="{% static 'style/style.css' %}" rel="stylesheet" >
+     <link href="{% static 'style/animate.css' %}" rel="stylesheet" >
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
      <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
@@ -12,16 +13,16 @@
      <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-     <script src="js/main.js"></script>
-     <script src="js/wow.min.js"></script>
+     <script src="{% static 'js/main.js' %}"></script>
+     <script src="{% static 'js/wow.min.js' %}"></script>
      <script>
-              new WOW().init();
-              </script>
+          new WOW().init();
+      </script>
    </head>
    <body>
        <section id="a">
           <section id="logo-section">
-                 <span><a href="index.html"><img src="images/logo.png" id="logo"/></a></span>
+                 <span><a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" id="logo"/></a></span>
 
           </section>
           <section id="text-areaa1">
@@ -35,18 +36,20 @@
                     </div>
                   </div>
                 </div>
-
-
-
           </section>
        </section>
+       <h1>{{ product.name }}</h1>
        <section id="product-details">
          <div class="container-fluid">
            <div class="row">
              <div class="col-sm-12">
 
                <div class="col-sm-5" id="ar-hover">
-                 <img src="images/img2.jpg" id="product-page-img"/>
+               {% if product.image %}
+                 <img src="{{ product.image.url }}" id="product-page-img"/>
+               {% else %}
+                 <img src="" id="product-page-img" alt="Blank"/>
+               {% endif %}
                </div>
                <div class="col-sm-6">
                  <section id="product-text-para">
@@ -54,27 +57,27 @@
                      <tbody>
                        <tr>
                          <td><span id="products-titel">Title</span></td>
-                         <td><span id="products-details">Globe Compass Logo</span></td>
+                         <td><span id="products-details">{{ product.title }}</span></td>
                        </tr>
                        <tr>
                          <td><span id="products-titel">Description</span></td>
-                         <td><span id="products-details">A colorful globe logo with an outer ring that shows a simplified compass design</span></td>
+                         <td><span id="products-details">{{ product.description }}</span></td>
                        </tr>
                        <tr>
                          <td><span id="products-titel">Price</span></td>
-                         <td><span id="products-details">0</span></td>
+                         <td><span id="products-details">{{ product.price }}</span></td>
                        </tr>
                        <tr>
                          <td><span id="products-titel">ZIP file size</span></td>
-                         <td><span id="products-details">324KB</span></td>
+                         <td><span id="products-details">{{ ProductSize }} KB</span></td>
                        </tr>
                        <tr>
                          <td><span id="products-titel">License</span></td>
-                         <td><span id="products-details">Free Logo: Limited, Royalty-Free Use</span></td>
+                         <td><span id="products-details">{{ product.license }}</span></td>
                        </tr>
                      </tbody>
                    </table>
-                     <a id="download">Download</a>
+                     <a href="/get/{{ProductName}}" id="download">Download</a>
                  </section>
                </div>
              </div>
@@ -85,18 +88,16 @@
          <div class="container-fluid">
            <div class="row">
              <div class="col-sm-12">
+             {% for i in RelatedProducts %}
                <div class="col-sm-3" id="product-img-box">
-                 <img src="images/img.jpg" id="list-images-serial" class="wow fadeInUp "/>
+
+                {% if i.image %}
+                     <a href="/product/{{ i.id }}"><img src="{{ i.image.url }}" id="list-images-serial" class="wow fadeInUp "/></a>
+                  {% else %}
+                   <a href="/product/{{ i.id }}"><img src="" id="img-box-part" class="wow fadeInUp " alt="Blank"/></a>
+                  {% endif %}
                </div>
-               <div class="col-sm-3" id="product-img-box">
-                 <img src="images/img2.jpg" id="list-images-serial" class="wow fadeInUp "/>
-               </div>
-               <div class="col-sm-3" id="product-img-box">
-                 <img src="images/img3.jpg" id="list-images-serial" class="wow fadeInUp "/>
-               </div>
-               <div class="col-sm-3" id="product-img-box">
-                 <img src="images/img4.jpg" id="list-images-serial" class="wow fadeInUp "/>
-               </div>
+              {% endfor %}
              </div>
            </div>
          </div>

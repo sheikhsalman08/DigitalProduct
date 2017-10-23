@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('.second-menu').attr('id','active')
+  })
+</script>
        <section id="side-menu">
        {{ path }}
          <ul>
@@ -32,7 +37,7 @@
                   </div>
                   <a href="product.html">
                   {% if i.image %}
-                     <img src="{{ i.image.url }}" id="img-box-part" class="wow fadeInUp "/>
+                     <a href="/product/{{ i.id }}"><img src="{{ i.image.url }}" id="img-box-part" class="wow fadeInUp "/></a>
                   {% else %}
                     <img src="" id="img-box-part" class="wow fadeInUp " alt="Blank"/>
                   {% endif %}
@@ -40,55 +45,7 @@
                </div>
              {% endfor %}
              </div>         <!-- End picture -->
-
-             <div class="col-sm-12" id="img-row"> <!-- Begin Logo -->
-              {% for i in logo %}
-               <div class="col-sm-3" id="box-row">
-                 <div class="middle">
-                    <i class="fa fa-cloud-download fa-5x" aria-hidden="true"></i>
-                  </div>
-                  <a href="product.html">
-                  {% if i.image %}
-                     <img src="{{ i.image.url }}" id="img-box-part" class="wow fadeInUp "/>
-                  {% else %}
-                    <img src="" id="img-box-part" class="wow fadeInUp " alt="Blank"/>
-                  {% endif %}
-                  </a>
-                 {% endfor %}
-               </div>   <!-- End Logo -->
-
-             <div class="col-sm-12" id="img-row"> <!-- Begin Poster -->
-              {% for i in poster %}
-               <div class="col-sm-3" id="box-row">
-                 <div class="middle">
-                    <i class="fa fa-cloud-download fa-5x" aria-hidden="true"></i>
-                  </div>
-                  <a href="product.html">
-                  {% if i.image %}
-                     <img src="{{ i.image.url }}" id="img-box-part" class="wow fadeInUp "/>
-                  {% else %}
-                    <img src="" id="img-box-part" class="wow fadeInUp " alt="Blank"/>
-                  {% endif %}
-                  </a>
-                 {% endfor %}
-               </div>   <!-- End Poster -->
-
-             <div class="col-sm-12" id="img-row"> <!-- Begin videos -->
-              {% for i in videos %}
-               <div class="col-sm-3" id="box-row">
-                 <div class="middle">
-                    <i class="fa fa-cloud-download fa-5x" aria-hidden="true"></i>
-                  </div>
-                  <a href="product.html">
-                  {% if i.image %}
-                     <img src="{{ i.image.url }}" id="img-box-part" class="wow fadeInUp "/>
-                  {% else %}
-                    <img src="" id="img-box-part" class="wow fadeInUp " alt="Blank"/>
-                  {% endif %}
-                  </a>
-                 {% endfor %}
-               </div>   <!-- End Videos -->
-
+             
            </div>
          </div>
        </section>

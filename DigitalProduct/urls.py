@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 
 from django.conf.urls import include, url
 from django.contrib import admin
-from products.views import home,picture,logo,poster,videos
+from products.views import home,picture,logo,poster,videos,ProductSinglePage,download_file
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -28,6 +28,8 @@ urlpatterns = [
     url(r'^logo/', logo,name="logo" ),
     url(r'^poster/', poster,name="poster" ),
     url(r'^videos/', videos,name="videos" ),
+    url(r'^product/(?P<pk>[-\w]+)/$', ProductSinglePage.as_view(), name= 'product_single_page'),
+    url(r'^get\/(?P<path>.*)$', download_file),
 
 ]
 

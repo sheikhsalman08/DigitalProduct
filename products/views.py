@@ -1,4 +1,14 @@
+#general 
 from django.shortcuts import render
+from django.views.generic import DetailView
+
+#for download file
+import os
+from django.conf import settings
+from django.http import HttpResponse
+from django.utils.encoding import smart_str
+from wsgiref.util import FileWrapper
+
 from .models import Products
 from django.shortcuts import redirect, HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -46,9 +56,41 @@ def poster(request):
 	return render(request,'poster.html',context)
 
 def videos(request):
-	videos = Products.objects.filter(type="3")
+	videos = Products.objects.filter(type="4")
 
 	context = {
 		'videos':videos,
 	}
 	return render(request,'video.html',context)
+
+
+class ProductSinglePage(DetailView):
+	model = Products
+	template_name = "product.html"
+
+	def get_context_data(self, **kwargs):
+		context = super(ProductSinglePage, self).get_context_data(**kwargs)
+		ThisId = self.kwargs['pk']
+		product = Products.objects.get(id=ThisId)
+		ThisType = product.type
+		RelatedProducts = Products.objects.filter(type=ThisType).exclude(id=ThisId)[:4]
+		ProductSize = product.image.size/1000
+		ProductName = product.image.name
+		print(ProductName)
+		context = {
+			'product' : product,
+			'RelatedProducts':RelatedProducts,
+			'ProductSize': ProductSize,
+			'ProductName':ProductName,
+		}
+
+		return context
+
+
+def download_file(request, path):  
+	response = HttpResponse('image/png')
+	response['Content-Type']='image/png'
+	response['Content-Disposition'] = "attachment; filename="+path
+	# response['Content-Disposition'] = "attachment; filename='636721521.jpg'"
+	response['X-Sendfile']= smart_str(os.path.join(settings.MEDIA_ROOT, path))
+	return response

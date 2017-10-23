@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('.first-menu').attr('id','active')
+  })
+</script>
        <section id="side-menu">
          <ul>
            <li id="sub-menu-box">
@@ -29,7 +34,7 @@
                  <div class="middle">
                     <i class="fa fa-cloud-download fa-5x" aria-hidden="true"></i>
                   </div>
-                  <a href="product.html">
+                  <a href="/product/{{ i.id }}">
                   {% if i.image %}
                      <img src="{{ i.image.url }}" id="img-box-part" class="wow fadeInUp "/>
                   {% else %}
@@ -46,7 +51,7 @@
                  <div class="middle">
                     <i class="fa fa-cloud-download fa-5x" aria-hidden="true"></i>
                   </div>
-                  <a href="product.html">
+                  <a href="/product/{{ i.id }}">
                   {% if i.image %}
                      <img src="{{ i.image.url }}" id="img-box-part" class="wow fadeInUp "/>
                   {% else %}
@@ -62,7 +67,7 @@
                  <div class="middle">
                     <i class="fa fa-cloud-download fa-5x" aria-hidden="true"></i>
                   </div>
-                  <a href="product.html">
+                  <a href="/product/{{ i.id }}">
                   {% if i.image %}
                      <img src="{{ i.image.url }}" id="img-box-part" class="wow fadeInUp "/>
                   {% else %}
@@ -78,7 +83,7 @@
                  <div class="middle">
                     <i class="fa fa-cloud-download fa-5x" aria-hidden="true"></i>
                   </div>
-                  <a href="product.html">
+                  <a href="/product/{{ i.id }}">
                   {% if i.image %}
                      <img src="{{ i.image.url }}" id="img-box-part" class="wow fadeInUp "/>
                   {% else %}
