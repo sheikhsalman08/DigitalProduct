@@ -82,15 +82,26 @@ class ProductSinglePage(DetailView):
 			'RelatedProducts':RelatedProducts,
 			'ProductSize': ProductSize,
 			'ProductName':ProductName,
+			'ThisId': ThisId
 		}
 
 		return context
 
 
-def download_file(request, path):  
-	response = HttpResponse('image/png')
-	response['Content-Type']='image/png'
-	response['Content-Disposition'] = "attachment; filename="+path
-	# response['Content-Disposition'] = "attachment; filename='636721521.jpg'"
-	response['X-Sendfile']= smart_str(os.path.join(settings.MEDIA_ROOT, path))
-	return response
+# def download_file(request, path):  
+# 	response = HttpResponse('image/jpg/png/jpeg/pdf')
+# 	# response['Content-Type']='image/png'
+# 	response['Content-Disposition'] = "attachment; filename="+path
+
+# 	# 	response['Content-Disposition'] = "attachment; filename='636721521.jpg'"
+# 	response['X-Sendfile']= smart_str(os.path.join(settings.MEDIA_ROOT, path))
+# 	return response
+
+def download(request, image_id):
+    img = Products.objects.get(id=image_id)
+    wrapper    =  FileWrapper(open('{}/{}'.format(settings.MEDIA_ROOT, img.image.name),'r'))  # img.file returns full path to the image
+    # content_type = mimetypes.guess_type(filename)[0]  # Use mimetypes to get file type
+    # response['Content-Length']      = os.path.getsize(img.image)        
+    response     = HttpResponse(wrapper,content_type='image/jpg')  
+    response['Content-Disposition'] = "attachment; filename=%s" %  img.image
+    return response
