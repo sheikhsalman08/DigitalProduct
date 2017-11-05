@@ -1,0 +1,8 @@
+header/footer  ==  DigitalProducts/default_templates/base.html
+js/css/images  ==  DigitalProducts/static
+// ==  /products/templates/index.html
+picture/  ==  /products/templates/picture.html
+logo/  ==  /products/templates/logo.html
+poster/  ==  /products/templates/poster.html
+videos/  ==  /products/templates/video.html
+product/<number>  ==  /products/templates/product.html
