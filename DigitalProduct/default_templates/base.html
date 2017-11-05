@@ -1,0 +1,106 @@
+{% load static %}
+<html>
+   <head>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <title>Home</title>
+     <!-- <link rel="icon" href="images/logo-enterprise.png" /> -->
+     <link rel="icon" href="{% static 'images/logo-enterprise.png' %}" />
+     <link href="{% static 'style/style.css' %}" rel="stylesheet" >
+     <link href="{% static 'style/animate.css' %}" rel="stylesheet" >
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Paytone+One" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <script src="{% static 'js/main.js' %}"></script>
+
+   </head>
+   <body>
+       <section id="a">
+          <section id="logo-section">
+                 <span><a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" id="logo"/></a></span>
+                 <span>
+                   <section id="second-menu-bar">
+                     <button id="side-menu-singup" class="side-menu-singup">
+                        <i class="fa fa-bars side-menu-bar"></i>
+                    </button>
+                    <button id="side-menu-singup1" class="side-menu-singup1">
+                      <p id="croos-button">X</p>
+                   </button>
+                   </section>
+                 </span>
+          </section>
+          <section id="text-areaa">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-3">
+                    </div>
+                    <div class="col-sm-9" id="text-part">
+                      <p><span id="page-title">justified</span> <span id="page-title1">shop</span></p>
+                      <p id="page-para">stylish and functional grid-based shop template</p>
+                    </div>
+                  </div>
+                </div>
+
+                <section id="arman">
+                  <a id="button">purchase thegem</a>
+                </section>
+
+          </section>
+          <section id="menu">
+           <div class="conatiner">
+             <div class="row">
+               <div class="col-sm-12">
+                 <div class="col-sm-3">
+                 </div>
+                 <div class="col-sm-8">
+                   <ul id="menu-bar">
+                     <li class="first-menu"><a href="{% url 'home' %}">All</a></li>
+                     <li class="second-menu"><a href="{% url 'picture' %}">pictures</a></li>
+                     <li class="third-menu"><a href="{% url 'logo' %}">Logo </a></li>
+                     <li class="fourth-menu"><a href="{% url 'poster' %}">Poster </a></li>
+                     <li class="fifth-menu"><a href="{% url 'videos' %}">Videos</a></li>
+                   </ul>
+                 </div>
+                 <div class="col-sm-1">
+                 </div>
+               </div>
+             </div>
+           </div>
+          </section>
+       </section>
+   {% block content %}{% endblock %}
+       
+       <section id="button-group">
+          <a id="button-last">load more products</a>
+       </section>
+       <section id="footer">
+         <div class="container-fluid">
+           <div class="row">
+             <div class="col-sm-12">
+               <div class="col-sm-4">
+                 <p>© Copyright 2017 <span id="company-name">Sheikhdeveloper</span></p>
+               </div>
+               <div class="col-sm-4" id="midel-text">
+                 <span id="footer-text">Support </span><span id="footer-text"> Contact Us </span>
+                 <span id="footer-text">Disclaimer  </span><span id="footer-text1">Privacy Policy </span>
+               </div>
+               <div class="col-sm-4" id="social-group">
+                 <span id="social-icon"><i class="fa fa-facebook" aria-hidden="true"></i></span>
+                 <span id="social-icon"><i class="fa fa-linkedin" aria-hidden="true"></i></span>
+                 <span id="social-icon"><i class="fa fa-google-plus" aria-hidden="true"></i></span>
+                 <span id="social-icon"><i class="fa fa-twitter" aria-hidden="true"></i></span>
+                 <span id="social-icon"><i class="fa fa-skyatlas" aria-hidden="true"></i></span>
+               </div>
+             </div>
+           </div>
+         </div>
+       </section>
+       <script src="{% static 'js/wow.min.js' %}"></script>
+       <script>
+                new WOW().init();
+                </script>
+   </body>
+</html>
